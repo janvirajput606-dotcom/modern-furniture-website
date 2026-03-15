@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Studio | Core & Craft Modern Furniture</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HB2FF2RTEE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-HB2FF2RTEE');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HB2FF2RTEE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HB2FF2RTEE');
+    </script>
     <style>
         :root {
             --bg-beige: #F5F5DC;
@@ -21,6 +19,7 @@
             --accent-mocha: #6F4E37;
             --detail-grey: #708090;
             --white: #FFFFFF;
+            --whatsapp-green: #25d366;
         }
 
         * {
@@ -34,6 +33,7 @@
             background-color: var(--bg-beige);
             color: var(--text-black);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         h1, h2, h3 {
@@ -46,7 +46,7 @@
             color: inherit;
         }
 
-        /* Header */
+        /* 1. Sticky Header */
         header {
             background-color: var(--text-black);
             color: var(--bg-beige);
@@ -54,6 +54,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .logo {
@@ -70,6 +74,12 @@
 
         nav a:hover {
             color: var(--accent-mocha);
+            transition: 0.3s;
+        }
+
+        .active {
+            color: var(--accent-mocha);
+            font-weight: 700;
         }
 
         .menu-toggle {
@@ -83,9 +93,10 @@
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
-            padding: 4rem 5%;
+            padding: 5rem 5%;
             max-width: 1400px;
             margin: 0 auto;
+            align-items: center;
         }
 
         .hero-text {
@@ -98,37 +109,48 @@
             text-transform: uppercase;
             letter-spacing: 0.35em;
             color: #A67C52;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: block;
         }
 
         .hero-title {
-            font-size: 2.5rem;
+            font-size: 3rem;
             line-height: 1.2;
-            margin: 1rem 0;
+            margin-bottom: 1.5rem;
         }
 
         .hero-subtitle {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: #57534E;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
+        /* Checkbox List Styling */
         .flow-list {
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 1rem;
         }
 
         .flow-item {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            border: 1px solid #D6D3D1;
+            gap: 1rem;
             background: white;
-            padding: 0.75rem;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
+        }
+
+        .flow-item:hover {
+            transform: translateX(10px);
         }
 
         .check-icon {
             color: #A67C52;
+            font-weight: bold;
         }
 
         .hero-image {
@@ -138,14 +160,15 @@
 
         .hero-image img {
             width: 100%;
-            height: 400px;
+            height: 500px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        /* Customization Blocks */
+        /* 2. Customization Blocks with Enhanced Shadows */
         .blocks-section {
-            padding: 2rem 5%;
+            padding: 5rem 5%;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -153,18 +176,25 @@
         .blocks-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
+            gap: 2rem;
         }
 
         .block-card {
-            border: 1px solid #D6D3D1;
             background: white;
-            padding: 1.5rem;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .block-card:hover {
+            transform: translateY(-5px);
         }
 
         .block-title {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-mocha);
         }
 
         .block-list {
@@ -172,149 +202,194 @@
         }
 
         .block-list li {
-            font-size: 0.875rem;
+            font-size: 1rem;
             color: #57534E;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #F5F5F5;
         }
 
-        /* Color Options */
+        /* 3. Color Options Interactive Polish */
         .colors-section {
-            padding: 2rem 5%;
+            padding: 5rem 5%;
             max-width: 1400px;
             margin: 0 auto;
+            background-color: var(--white);
+            border-radius: 12px;
+            margin-bottom: 5rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
         }
 
         .colors-title {
-            font-size: 1.125rem;
-            margin-bottom: 1rem;
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+            text-align: center;
         }
 
         .colors-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 0.75rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
         }
 
         .color-option {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border: 1px solid #D6D3D1;
+            background: var(--bg-beige);
+            padding: 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .color-option:hover {
             background: white;
-            padding: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transform: scale(1.02);
         }
 
         .color-swatch {
-            width: 40px;
-            height: 24px;
-            border: 1px solid #1C1917;
+            width: 50px;
+            height: 30px;
+            border-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* 4. Scroll Reveal Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: var(--whatsapp-green);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-icon {
+            width: 35px;
+            height: 35px;
         }
 
         /* Footer */
         footer {
             background-color: var(--text-black);
             color: var(--bg-beige);
-            padding: 2rem 5%;
+            padding: 3rem 5%;
             text-align: center;
-            margin-top: 4rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-            .menu-toggle {
-                display: block;
-            }
-            .hero-title {
-                font-size: 2rem;
-            }
-            .hero-image img {
-                height: 300px;
-            }
+            nav ul { display: none; }
+            .menu-toggle { display: block; }
+            .hero-title { font-size: 2.2rem; }
+            .hero-image img { height: 350px; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
     <header>
-        <div class="logo">Core&craft FURNITURE</div>
+        <div class="logo">Core & Craft</div>
         <div class="menu-toggle">☰</div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="custom.html">Custom Studio</a></li>
+                <li><a href="collection.html">Collection</a></li> 
+                <li><a href="custom.html" class="active">Custom Studio</a></li> 
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-text">
-            <p class="eyebrow">Customization Options</p>
+            <span class="eyebrow">The Bespoke Experience</span>
             <h1 class="hero-title">Your Design, Our Iron Craftsmanship</h1>
             <p class="hero-subtitle">
-                From couch covers to chair heights and complete custom dimensions, every detail can match your house style and comfort.
+                From precision frame heights to luxury upholstery, we build furniture that fits your space—not the other way around.
             </p>
             <div class="flow-list">
                 <div class="flow-item">
                     <span class="check-icon">✓</span>
-                    <p>Choose frame style and structure</p>
+                    <p>Engineered Frame Structures</p>
                 </div>
                 <div class="flow-item">
                     <span class="check-icon">✓</span>
-                    <p>Select cover texture and colors</p>
+                    <p>Curated Texture & Palette</p>
                 </div>
                 <div class="flow-item">
                     <span class="check-icon">✓</span>
-                    <p>Finalize dimensions that fit your room</p>
+                    <p>Millimeter-Perfect Dimensions</p>
                 </div>
             </div>
         </div>
         <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?auto=format&fit=crop&w=1200&q=80" alt="Fabric and furniture customization options">
+            <img src="https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?auto=format&fit=crop&w=1200&q=80" alt="Bespoke furniture workshop">
         </div>
     </section>
 
-    <!-- Customization Blocks -->
     <section class="blocks-section">
         <div class="blocks-grid">
             <div class="block-card">
-                <h2 class="block-title">Frame Finishes</h2>
+                <h2 class="block-title">Industrial Finishes</h2>
                 <ul class="block-list">
-                    <li>• Matte Black - Classic industrial look</li>
-                    <li>• Brushed Silver - Modern and sleek</li>
-                    <li>• Antique Gold - Vintage elegance</li>
-                    <li>• Mocha Brown - Warm and inviting</li>
+                    <li>• Matte Raven Black</li>
+                    <li>• Hand-Brushed Gunmetal</li>
+                    <li>• Aged Champagne Gold</li>
+                    <li>• Deep Mocha Walnut</li>
                 </ul>
             </div>
             <div class="block-card">
-                <h2 class="block-title">Cover Materials</h2>
+                <h2 class="block-title">Premium Upholstery</h2>
                 <ul class="block-list">
-                    <li>• Premium Leather - Durable and luxurious</li>
-                    <li>• Velvet - Soft and elegant</li>
-                    <li>• Linen - Natural and breathable</li>
-                    <li>• Synthetic Blend - Easy to clean</li>
+                    <li>• Top-Grain Italian Leather</li>
+                    <li>• High-Density Velvet</li>
+                    <li>• Organic Belgian Linen</li>
+                    <li>• Performance Hybrid Blends</li>
                 </ul>
             </div>
             <div class="block-card">
-                <h2 class="block-title">Custom Dimensions</h2>
+                <h2 class="block-title">Made to Measure</h2>
                 <ul class="block-list">
-                    <li>• Beds: Any length and width</li>
-                    <li>• Couches: Custom seating depth</li>
-                    <li>• Tables: Exact room fit</li>
-                    <li>• Chairs: Seat height options</li>
+                    <li>• Bed Frame Extensions</li>
+                    <li>• Custom Sofa Seating Depth</li>
+                    <li>• Dynamic Desk Heights</li>
+                    <li>• Space-Saving Footprints</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Color Options -->
     <section class="colors-section">
-        <h2 class="colors-title">Cover & Upholstery Colors</h2>
+        <h2 class="colors-title">Studio Color Palette</h2>
         <div class="colors-grid">
             <div class="color-option">
                 <span>Ivory Beige</span>
@@ -343,10 +418,40 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
+    </a>
+
     <footer>
-        <p>&copy; 2023 Core&Craft Modern Furniture. All Rights Reserved.</p>
+        <p>&copy; 2026 Core&Craft Modern Furniture. All Rights Reserved.</p>
     </footer>
 
+    <script>
+        // Mobile Menu Toggle Logic
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('nav ul');
+        menuToggle.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if(navLinks.style.display === 'flex') {
+                navLinks.style.cssText = "display:flex; flex-direction:column; position:absolute; top:60px; left:0; width:100%; background:var(--text-black); padding:1rem; z-index:100;";
+            }
+        });
+
+        // Intersection Observer for Scroll Reveal
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        // Target sections for reveal
+        document.querySelectorAll('section, .hero-section').forEach(el => {
+            el.classList.add('reveal');
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
