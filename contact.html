@@ -5,13 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | Core & Craft Modern Furniture</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HB2FF2RTEE"></script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-536X5ZCM2Q"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-HB2FF2RTEE');
+      gtag('config', 'G-536X5ZCM2Q');
+
+      // Function to track WhatsApp clicks
+      function trackWhatsAppClick() {
+        gtag('event', 'contact_whatsapp', {
+          'event_category': 'Contact',
+          'event_label': 'WhatsApp Button'
+        });
+      }
     </script>
+    
     <style>
         :root {
             --bg-darker-beige: #E8E8D0; 
@@ -267,7 +277,7 @@
 
             .menu-toggle { 
                 display: flex; 
-                margin-left: auto; /* Pushes toggle to the right */
+                margin-left: auto; 
             }
             
             nav ul {
@@ -365,10 +375,10 @@
                 <p>+91 735 734 0222</p>
             </div>
         </div>
-        <a href="https://wa.me/917357340222" class="btn-whatsapp-large" target="_blank">Start Conversation</a>
+        <a href="https://wa.me/917357340222" class="btn-whatsapp-large" target="_blank" onclick="trackWhatsAppClick()">Start Conversation</a>
     </section>
 
-    <a href="https://wa.me/917357340222" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/917357340222" class="whatsapp-float" target="_blank" onclick="trackWhatsAppClick()">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:35px;">
     </a>
 
